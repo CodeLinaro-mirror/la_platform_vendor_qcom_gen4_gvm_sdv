@@ -2,3 +2,23 @@
 # SPDX-License-Identifier: BSD-3-Clause-Clear
 /data/vendor/mediadrm(/.*)?  u:object_r:mediadrm_vendor_data_file:s0
 
+#AGM
+/(vendor|system/vendor)/bin/hw/vendor\.qti\.hardware\.AGMIPC@1\.0-service      u:object_r:vendor_agmservice_qti_exec:s0
+
+/dev/snd/controlC0                                                       u:object_r:audio_device:s0
+
+/dev/snd/pcmC0D0p                                                        u:object_r:audio_device:s0
+/dev/snd/pcmC0D2p                                                        u:object_r:audio_device:s0
+/dev/snd/pcmC0D4p                                                        u:object_r:audio_device:s0
+/dev/snd/pcmC0D6p                                                        u:object_r:audio_device:s0
+/dev/snd/pcmC0D10p                                                       u:object_r:audio_device:s0
+/dev/snd/pcmC0D12p                                                       u:object_r:audio_device:s0
+/dev/snd/pcmC0D14p                                                       u:object_r:audio_device:s0
+/dev/snd/pcmC0D16p                                                       u:object_r:audio_device:s0
+/dev/snd/pcmC0D18p                                                       u:object_r:audio_device:s0
+/dev/snd/pcmC0D20p                                                       u:object_r:audio_device:s0
+/dev/snd/pcmC0D22p                                                       u:object_r:audio_device:s0
+/dev/snd/pcmC0D24p                                                       u:object_r:audio_device:s0
+/dev/snd/pcmC0D26p                                                       u:object_r:audio_device:s0
+#/dev/hab                                                                u:object_r:device:s0
+/dev/ttyAMA0                                                             u:object_r:tty_device:s0

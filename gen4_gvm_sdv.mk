@@ -98,7 +98,8 @@ PRODUCT_PACKAGES += \
 		    public.libraries.android.txt \
 		    logcat \
 		    logd \
-		    fsck.f2fs
+		    fsck.f2fs \
+                    libhar-pal \
 
 PRODUCT_PACKAGES += fstab.sdv
 
@@ -120,3 +121,6 @@ LOCAL_ANDROIDBOOT_INIT_RC := /vendor/etc/init/hw/init.target.rc
 PRODUCT_ENFORCE_VINTF_MANIFEST := false
 PRODUCT_COPY_FILES += \
 		      device/qcom/gen4_gvm_sdv/init.target.rc:vendor/etc/init/hw/init.target.rc \
+
+PRODUCT_COPY_FILES += \
+    vendor/qcom/opensource/harry-pal/device_manager.xml:$(TARGET_COPY_OUT_VENDOR)/etc/device_manager.xml
