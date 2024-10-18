@@ -124,3 +124,9 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     vendor/qcom/opensource/harry-pal/device_manager.xml:$(TARGET_COPY_OUT_VENDOR)/etc/device_manager.xml
+
+# SOME/IP stack
+PRODUCT_PACKAGES += \
+                    qc_sdv_someip_stack_agent \
+                    vsomeip_vlan1500.json \
+                    vsomeip_vlan1510.json \
