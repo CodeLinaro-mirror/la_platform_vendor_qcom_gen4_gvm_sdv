@@ -23,6 +23,9 @@ PRODUCT_MODEL := gen4_gvm_sdv for arm64
 
 TARGET_USES_STAGING_FEATURES := true
 
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
+                                              device/qcom/gen4_gvm_sdv/compatibility_matrix.xml
+
 # CAN utils
 PRODUCT_PACKAGES += candump \
                     cansend \
