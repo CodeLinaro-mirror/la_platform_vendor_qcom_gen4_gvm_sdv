@@ -1,0 +1,36 @@
+# Copyright (c) 2024 Qualcomm Innovation Center, Inc. All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause-Clear
+
+attribute sdv_someip_stack_client;
+attribute sdv_someip_stack_server;
+expandattribute sdv_someip_stack_client true;
+expandattribute sdv_someip_stack_server false;
+
+type sdv_someip_stack_service, protected_service, service_manager_type;
+
+# SOME/IP Stack can register the IPC service (defined in service.te).
+add_service(sdv_someip_stack_server, sdv_someip_stack_service)
+
+binder_call(sdv_someip_stack_client, sdv_someip_stack_server)
+binder_call(sdv_someip_stack_server, sdv_someip_stack_client)
+
+allow sdv_someip_stack_client sdv_someip_stack_service:service_manager find;
+
+type sdv_someip_stack_default, domain;
+typeattribute sdv_someip_stack_default mlstrustedsubject;
+type sdv_someip_stack_default_exec, exec_type, file_type, vendor_file_type;
+init_daemon_domain(sdv_someip_stack_default)
+
+# Allow the sdv_someip_stack_default domain to use Binder IPC
+binder_use(sdv_someip_stack_default)
+
+type vsomeip_data_file, file_type, data_file_type;
+
+# SOME/IP agent can use sockets
+net_domain(sdv_someip_stack_default)
+
+typeattribute sdv_someip_stack_default sdv_someip_stack_server;
+
+allow sdv_someip_stack_default vsomeip_data_file:dir rw_dir_perms;
+allow sdv_someip_stack_default vsomeip_data_file:file create_file_perms;
+allow sdv_someip_stack_default vsomeip_data_file:sock_file { write create setattr unlink };

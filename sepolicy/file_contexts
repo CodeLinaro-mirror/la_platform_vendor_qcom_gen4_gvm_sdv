@@ -22,3 +22,7 @@
 /dev/snd/pcmC0D26p                                                       u:object_r:audio_device:s0
 #/dev/hab                                                                u:object_r:device:s0
 /dev/ttyAMA0                                                             u:object_r:tty_device:s0
+
+# SDV SOME/IP Stack
+/vendor/bin/sdv_someip_stack_agent                                       u:object_r:sdv_someip_stack_default_exec:s0
+/data/vendor/someip(/.*)?                                                u:object_r:vsomeip_data_file:s0
