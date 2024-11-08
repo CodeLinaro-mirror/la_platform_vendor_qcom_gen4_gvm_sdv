@@ -2,6 +2,8 @@
 TARGET_BOARD_DERIVATIVE_SUFFIX := _sdv
 PRODUCT_MANUFACTURER := Qualcomm
 
+SDV_OPEN_DICE_PROVIDER_PACKAGES := init_open_dice
+
 SDV_SOMEIP_BROKER_CONFIG := broker_config.json
 include device/google/sdv/sdv_core_base/sdv_core_base.mk
 
