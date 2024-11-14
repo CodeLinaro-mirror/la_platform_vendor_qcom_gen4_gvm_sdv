@@ -103,6 +103,7 @@ PRODUCT_PACKAGES += \
 		    logd \
 		    fsck.f2fs \
                     libhar-pal \
+		    HarPalTest \
 
 PRODUCT_PACKAGES += fstab.sdv
 
