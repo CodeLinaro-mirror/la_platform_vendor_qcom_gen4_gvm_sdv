@@ -1,0 +1,5 @@
+# Copyright (c) 2024 Qualcomm Innovation Center, Inc. All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause-Clear
+
+# SDV SOME/IP stack IPC interface
+google.sdv.someip.ISomeIpStack/default u:object_r:sdv_someip_stack_service:s0

@@ -2,6 +2,8 @@
 TARGET_BOARD_DERIVATIVE_SUFFIX := _sdv
 PRODUCT_MANUFACTURER := Qualcomm
 
+SDV_OPEN_DICE_PROVIDER_PACKAGES := init_open_dice
+
 SDV_SOMEIP_BROKER_CONFIG := broker_config.json
 include device/google/sdv/sdv_core_base/sdv_core_base.mk
 
@@ -22,6 +24,9 @@ PRODUCT_MODEL := gen4_gvm_sdv for arm64
 #CUSTOM_PATCHES_MODE := apply
 
 TARGET_USES_STAGING_FEATURES := true
+
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
+                                              device/qcom/gen4_gvm_sdv/compatibility_matrix.xml
 
 # CAN utils
 PRODUCT_PACKAGES += candump \
@@ -100,6 +105,7 @@ PRODUCT_PACKAGES += \
 		    logd \
 		    fsck.f2fs \
                     libhar-pal \
+		    HarPalTest \
 
 PRODUCT_PACKAGES += fstab.sdv
 
@@ -124,3 +130,9 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     vendor/qcom/opensource/harry-pal/device_manager.xml:$(TARGET_COPY_OUT_VENDOR)/etc/device_manager.xml
+
+# SOME/IP stack
+PRODUCT_PACKAGES += \
+                    qc_sdv_someip_stack_agent \
+                    vsomeip_vlan1500.json \
+                    vsomeip_vlan1510.json \

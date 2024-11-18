@@ -36,7 +36,7 @@ TARGET_2ND_CPU_VARIANT :=
 BOARD_KERNEL_CMDLINE :=
 BOARD_BOOTCONFIG :=
 
-ifneq ( ,$(filter V VanillaIceCream 15,$(PLATFORM_VERSION)))
+ifneq ( ,$(filter V VanillaIceCream 15 W Baklava 16,$(PLATFORM_VERSION)))
 TARGET_ANDROID_BELOW_V15 := false
 else
 TARGET_ANDROID_BELOW_V15 := true
@@ -73,3 +73,6 @@ BOARD_VENDOR_SEPOLICY_DIRS += device/qcom/gen4_gvm_sdv/sepolicy
 BOARD_VENDOR_SEPOLICY_DIRS += device/google/sdv/sdv_core_base/sepolicy
 BOARD_VENDOR_SEPOLICY_DIRS += device/google/sdv/sdv_base/sepolicy
 ENABLE_WIDEVINE_DRM := false
+
+$(call add_soong_config_namespace,qti)
+$(call soong_config_set,qti,qti_android_version_above_16,true)
