@@ -2,7 +2,9 @@
 TARGET_BOARD_DERIVATIVE_SUFFIX := _sdv
 PRODUCT_MANUFACTURER := Qualcomm
 
-SDV_OPEN_DICE_PROVIDER_PACKAGES := init_open_dice
+SDV_OPEN_DICE_PROVIDER_PACKAGES := \
+    init_open_dice \
+    sample_dice_handover_file \
 
 SDV_SOMEIP_BROKER_CONFIG := broker_config.json
 include device/google/sdv/sdv_core_base/sdv_core_base.mk
@@ -136,3 +138,8 @@ PRODUCT_PACKAGES += \
                     qc_sdv_someip_stack_agent \
                     vsomeip_vlan1500.json \
                     vsomeip_vlan1510.json \
+
+TARGET_BOARD_INFO_FILE := device/qcom/gen4_gvm_sdv/android-info.txt
+
+ENABLE_KEYMINT := false
+TARGET_USES_QMAA_OVERRIDE_KMGK := false
