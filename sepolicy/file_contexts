@@ -19,4 +19,4 @@
 /dev/ttyAMA0                                                             u:object_r:tty_device:s0
 
 # SDV SOME/IP Stack
-/vendor/bin/sdv_someip_stack_agent                                       u:object_r:sdv_someip_stack_default_exec:s0
+/vendor/bin/qc_sdv_someip_stack_agent                                    u:object_r:sdv_someip_stack_default_exec:s0
