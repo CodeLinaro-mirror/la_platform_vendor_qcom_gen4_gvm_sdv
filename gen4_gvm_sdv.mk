@@ -139,7 +139,7 @@ PRODUCT_PACKAGES += \
                     vsomeip_vlan1500.json \
                     vsomeip_vlan1510.json \
 
-TARGET_BOARD_INFO_FILE := device/google/sdv/sdv_media_cf/android-info.txt
+TARGET_BOARD_INFO_FILE := device/qcom/gen4_gvm_sdv/android-info.txt
 
 ENABLE_KEYMINT := false
 TARGET_USES_QMAA_OVERRIDE_KMGK := false
