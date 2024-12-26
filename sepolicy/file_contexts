@@ -18,5 +18,11 @@
 /dev/snd/pcmC0D26p                                                       u:object_r:audio_device:s0
 /dev/ttyAMA0                                                             u:object_r:tty_device:s0
 
+#HAB
+/dev/hab                                                                 u:object_r:device:s0
+
+#SOCKET
+/dev/socket                                                              u:object_r:socket_device:s0
+
 # SDV SOME/IP Stack
 /vendor/bin/qc_sdv_someip_stack_agent                                    u:object_r:sdv_someip_stack_default_exec:s0
