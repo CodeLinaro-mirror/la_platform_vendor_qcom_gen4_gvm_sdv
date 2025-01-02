@@ -133,11 +133,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/qcom/opensource/harry-pal/device_manager.xml:$(TARGET_COPY_OUT_VENDOR)/etc/device_manager.xml
 
-# SOME/IP stack
+# AAOS-SDV SOME/IP stack agent HAL
 PRODUCT_PACKAGES += \
                     qc_sdv_someip_stack_agent \
                     vsomeip_vlan1500.json \
                     vsomeip_vlan1510.json \
+                    someip_stack_agent_testapp \
 
 TARGET_BOARD_INFO_FILE := device/qcom/gen4_gvm_sdv/android-info.txt
 
