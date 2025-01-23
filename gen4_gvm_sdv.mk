@@ -9,7 +9,6 @@ SDV_OPEN_DICE_PROVIDER_PACKAGES := \
 SDV_SOMEIP_BROKER_CONFIG := broker_config.json
 include device/google/sdv/sdv_core_base/sdv_core_base.mk
 
-AOSP_KEYMINT_SERVICE = android.hardware.security.keymint-service
 PRODUCT_HOST_PACKAGES := $(filter-out $(SDV_CORE_SERVICES_HOST_SAMPLES_PACKAGES), $(PRODUCT_HOST_PACKAGES))
 PRODUCT_PACKAGES := $(filter-out $(AOSP_KEYMINT_SERVICE), $(PRODUCT_PACKAGES))
 
@@ -141,6 +140,3 @@ PRODUCT_PACKAGES += \
                     someip_stack_agent_testapp \
 
 TARGET_BOARD_INFO_FILE := device/qcom/gen4_gvm_sdv/android-info.txt
-
-ENABLE_KEYMINT := false
-TARGET_USES_QMAA_OVERRIDE_KMGK := false
