@@ -29,4 +29,4 @@
 # SPDX-License-Identifier: BSD-3-Clause-Clear
 
 
-vendor.qti.hardware.AGMIPC::IAGM                             u:object_r:vendor_agm_hwservice:s0
+vendor.qti.hardware.agm::IAGM                             u:object_r:vendor_agm_hwservice:s0
