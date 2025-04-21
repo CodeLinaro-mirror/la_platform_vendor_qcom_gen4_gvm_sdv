@@ -22,7 +22,9 @@
 /dev/hab                                                                 u:object_r:device:s0
 
 #AGM
-/(vendor|system/vendor)/bin/hw/agmipcservice                             u:object_r:vendor_agmservice_qti_exec:s0
+/vendor/bin/hw/agmipcservice                                             u:object_r:vendor_agmservice_qti_exec:s0
+
+/vendor/bin/HarPalTest                                                   u:object_r:vendor_agmplay_exec:s0
 
 #SOCKET
 /dev/socket                                                              u:object_r:socket_device:s0
