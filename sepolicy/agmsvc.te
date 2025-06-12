@@ -33,11 +33,10 @@
 #Allow for transition from init domain to agmservice
 
 type vendor_agmplay, domain;
-
 type vendor_agmplay_exec, exec_type, vendor_file_type, file_type;
+type agm_socket_dev, file_type;
 
 init_daemon_domain(vendor_agmservice_qti)
-
 init_daemon_domain(vendor_agmplay)
 
 # Add hwservice related rules
@@ -52,7 +51,6 @@ allow vendor_agmservice_qti vendor_dmabuf_system_heap_device:chr_file rw_file_pe
 
 #Allow access to uncached dmabuf
 allow vendor_agmservice_qti vendor_dmabuf_system_uncached_heap_device:chr_file rw_file_perms;
-
 
 #Allow qipc socket access for servreg communication
 allow vendor_agmservice_qti self:qipcrtr_socket create_socket_perms_no_ioctl;
@@ -81,15 +79,16 @@ get_prop(vendor_agmplay, hwservicemanager_prop)
 allow vendor_agmplay vendor_sysfs_kpi:file w_file_perms;
 allow vendor_agmplay vendor_sysfs_sndcard:file {open read write rw_file_perms};
 allow vendor_agmplay vendor_agmplay:qipcrtr_socket create;
+allow vendor_agmplay vendor_agmservice_qti:unix_stream_socket connectto;
 
 userdebug_or_eng(`
 allow vendor_agmplay kmsg_debug_device:chr_file {open write};
 ')
 
 #socket permission agmplay boot
-allow vendor_agmplay socket_device:sock_file { write setattr create};
-allow vendor_agmplay socket_device:dir { write add_name };
+allow vendor_agmplay agm_socket_dev:sock_file { write setattr create };
+allow vendor_agmplay agm_socket_dev:dir { write add_name setattr };
 
 #Allow socket access
-allow vendor_agmservice_qti socket_device:dir { search write add_name remove_name };
-allow vendor_agmservice_qti socket_device:sock_file { create write unlink setattr};
+allow vendor_agmservice_qti agm_socket_dev:dir { search write add_name remove_name setattr };
+allow vendor_agmservice_qti agm_socket_dev:sock_file { create write unlink setattr };

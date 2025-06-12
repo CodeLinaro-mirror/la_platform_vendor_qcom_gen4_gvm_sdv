@@ -28,6 +28,7 @@
 
 #SOCKET
 /dev/socket                                                              u:object_r:socket_device:s0
+/dev/socket/agm                                                          u:object_r:agm_socket_dev:s0
 
 # SDV SOME/IP Stack
 /vendor/bin/qc_sdv_someip_stack_agent                                    u:object_r:sdv_someip_stack_default_exec:s0

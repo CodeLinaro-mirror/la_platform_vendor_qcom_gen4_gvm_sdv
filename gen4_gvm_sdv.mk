@@ -15,6 +15,15 @@ PRODUCT_PACKAGES := $(filter-out $(AOSP_KEYMINT_SERVICE), $(PRODUCT_PACKAGES))
 # Inherit from the base product
 include device/qcom/gen4_gvm/gen4_gvm.mk
 
+MAKEFILE_DIR := vendor/qcom/defs/product-defs/system
+EXCLUDE_MAKEFILES := $(MAKEFILE_DIR)/sensor_product.mk
+ALL_MAKEFILES := $(wildcard $(MAKEFILE_DIR)/*.mk)
+INCLUDE_MAKEFILES := $(filter-out $(EXCLUDE_MAKEFILES), $(ALL_MAKEFILES))
+
+# Include the filtered makefiles
+$(foreach mk, $(INCLUDE_MAKEFILES), $(call inherit-product-if-exists, $(mk)))
+$(call inherit-product-if-exists, vendor/qcom/defs/product-defs/vendor/*.mk)
+
 PRODUCT_BUILD_PRODUCT_IMAGE := false
 
 PRODUCT_NAME := gen4_gvm_sdv
