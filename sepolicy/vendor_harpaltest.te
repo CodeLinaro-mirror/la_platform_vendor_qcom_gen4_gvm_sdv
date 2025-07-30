@@ -1,4 +1,4 @@
-# Copyright (c) 2021 The Linux Foundation. All rights reserved.
+# Copyright (c) 2020 The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -25,9 +25,34 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-# Changes from Qualcomm Innovation Center, Inc. are provided under the following license:
-# Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
+# Changes from Qualcomm Technologies, Inc. are provided under the following license:
+# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
 # SPDX-License-Identifier: BSD-3-Clause-Clear
 
-allow vendor_agmservice_qti vendor_hab_device:chr_file rw_file_perms;
+type vendor_harpaltest, domain;
+type vendor_harpaltest_exec, exec_type, vendor_file_type, file_type;
 
+#Allow for transition from init domain to agmservice
+init_daemon_domain(vendor_harpaltest)
+
+r_dir_file(vendor_harpaltest, proc_asound)
+binder_call(vendor_harpaltest, vendor_agmipcservice)
+binder_call(vendor_harpaltest, servicemanager)
+
+allow vendor_harpaltest audio_device:dir r_dir_perms;
+allow vendor_harpaltest audio_device:chr_file rw_file_perms;
+get_prop(vendor_harpaltest, vendor_audio_prop)
+get_prop(vendor_harpaltest, hwservicemanager_prop)
+
+allow vendor_harpaltest vendor_sysfs_kpi:file w_file_perms;
+allow vendor_harpaltest vendor_sysfs_sndcard:file {open read write rw_file_perms};
+allow vendor_harpaltest vendor_harpaltest:qipcrtr_socket create;
+allow vendor_harpaltest vendor_agmipcservice:unix_stream_socket connectto;
+
+userdebug_or_eng(`
+allow vendor_harpaltest kmsg_debug_device:chr_file {open write};
+')
+
+#socket permission to start harpaltest during boot
+allow vendor_harpaltest agm_socket_dev:sock_file { write setattr create };
+allow vendor_harpaltest agm_socket_dev:dir { write add_name setattr };

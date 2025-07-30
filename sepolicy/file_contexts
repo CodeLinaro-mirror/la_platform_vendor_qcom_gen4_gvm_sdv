@@ -1,4 +1,4 @@
-# Copyright (c) 2024 Qualcomm Innovation Center, Inc. All rights reserved.
+# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
 # SPDX-License-Identifier: BSD-3-Clause-Clear
 
 /dev/snd/controlC0                                                       u:object_r:audio_device:s0
@@ -22,9 +22,9 @@
 /dev/hab                                                                 u:object_r:device:s0
 
 #AGM
-/vendor/bin/hw/agmipcservice                                             u:object_r:vendor_agmservice_qti_exec:s0
+/vendor/bin/hw/agmipcservice                                             u:object_r:vendor_agmipcservice_exec:s0
 
-/vendor/bin/HarPalTest                                                   u:object_r:vendor_agmplay_exec:s0
+/vendor/bin/HarPalTest                                                   u:object_r:vendor_harpaltest_exec:s0
 
 #SOCKET
 /dev/socket                                                              u:object_r:socket_device:s0
