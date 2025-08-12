@@ -29,6 +29,12 @@ net_domain(sdv_someip_stack_default)
 
 typeattribute sdv_someip_stack_default sdv_someip_stack_server;
 
-allow sdv_someip_stack_default vendor_someip_data_file:dir rw_dir_perms;
-allow sdv_someip_stack_default vendor_someip_data_file:file create_file_perms;
-allow sdv_someip_stack_default vendor_someip_data_file:sock_file { write create setattr unlink };
+# someip log file access in userdebug mode
+userdebug_or_eng(`
+allow sdv_someip_stack_default vendor_someip_data_file:dir { add_name search write remove_name };
+allow sdv_someip_stack_default vendor_someip_data_file:file { create lock open write append getattr };
+')
+# someip sock file
+allow sdv_someip_stack_default vendor_someip_sock_file:dir { add_name search write remove_name };
+allow sdv_someip_stack_default vendor_someip_sock_file:file { create lock open write };
+allow sdv_someip_stack_default vendor_someip_sock_file:sock_file { create setattr write unlink };
