@@ -17,6 +17,11 @@
 /dev/snd/pcmC0D24p                                                       u:object_r:audio_device:s0
 /dev/snd/pcmC0D26p                                                       u:object_r:audio_device:s0
 
+/dev/hab-cam                                                        u:object_r:vendor_hab_cam_device:s0
+
+/dev/hab-ogles                                                      u:object_r:vendor_hab_ogles_device:s0
+/dev/hgsl                                                              u:object_r:gpu_device:s0
+
 #AGM
 /vendor/bin/hw/agmipcservice                                             u:object_r:vendor_agmipcservice_exec:s0
 
@@ -28,3 +33,8 @@
 
 # SDV SOME/IP Stack
 /vendor/bin/qc_sdv_someip_stack_agent                                    u:object_r:sdv_someip_stack_default_exec:s0
+
+# CIB Test app
+/vendor/bin/test_app_cib                                              u:object_r:cam_test_exec:s0
+
+
