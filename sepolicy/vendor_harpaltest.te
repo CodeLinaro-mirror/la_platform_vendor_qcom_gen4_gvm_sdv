@@ -35,6 +35,8 @@ type vendor_harpaltest_exec, exec_type, vendor_file_type, file_type;
 #Allow for transition from init domain to agmservice
 init_daemon_domain(vendor_harpaltest)
 
+hal_client_domain(vendor_harpaltest,hal_audio)
+
 r_dir_file(vendor_harpaltest, proc_asound)
 binder_call(vendor_harpaltest, vendor_agmipcservice)
 binder_call(vendor_harpaltest, servicemanager)
