@@ -1,21 +1,6 @@
 # Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
 # SPDX-License-Identifier: BSD-3-Clause-Clear
 
-attribute sdv_someip_stack_client;
-attribute sdv_someip_stack_server;
-expandattribute sdv_someip_stack_client true;
-expandattribute sdv_someip_stack_server false;
-
-type sdv_someip_stack_service, protected_service, service_manager_type;
-
-# SOME/IP Stack can register the IPC service (defined in service.te).
-add_service(sdv_someip_stack_server, sdv_someip_stack_service)
-
-binder_call(sdv_someip_stack_client, sdv_someip_stack_server)
-binder_call(sdv_someip_stack_server, sdv_someip_stack_client)
-
-allow sdv_someip_stack_client sdv_someip_stack_service:service_manager find;
-
 type sdv_someip_stack_default, domain;
 typeattribute sdv_someip_stack_default mlstrustedsubject;
 type sdv_someip_stack_default_exec, exec_type, file_type, vendor_file_type;
