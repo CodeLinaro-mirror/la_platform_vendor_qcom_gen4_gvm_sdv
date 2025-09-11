@@ -71,9 +71,39 @@ TARGET_USERIMAGES_SPARSE_F2FS_DISABLED := false
 -include $(QCPATH)/common/gen4_gvm_sdv/BoardConfigVendor.mk
 
 BOARD_VENDOR_SEPOLICY_DIRS += device/qcom/gen4_gvm_sdv/sepolicy
-BOARD_VENDOR_SEPOLICY_DIRS += device/google/sdv/sdv_core_base/sepolicy
-BOARD_VENDOR_SEPOLICY_DIRS += device/google/sdv/sdv_base/sepolicy
 ENABLE_WIDEVINE_DRM := false
 
 $(call add_soong_config_namespace,qti)
 $(call soong_config_set,qti,qti_android_version_above_16,true)
+
+#####################################################################################################################################
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS := device/google/sdv/sdv_base/sepolicy/system_ext/private \
+                                    device/google/sdv/sdv_core_base/sepolicy/system_ext/private \
+                                    device/google/sdv/sdv_cf/sepolicy/system_ext/private \
+                                    device/google/sdv/sdv_base/sepolicy/vvmtruststore/private \
+                                    device/qcom/sepolicy/generic/private
+
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS :=  device/google/sdv/sdv_base/sepolicy/system_ext/public \
+                                    device/google/sdv/sdv_core_base/sepolicy/system_ext/public \
+                                    device/qcom/sepolicy/generic/public
+
+PRODUCT_PRIVATE_SEPOLICY_DIRS :=    device/google/sdv/sdv_base/sepolicy/samples/product/private \
+                                    device/google/sdv/sdv_core_base/sepolicy/product/private \
+                                    device/google/sdv/sdv_base/sepolicy/samples/product/private \
+                                    device/google/sdv/sdv_core_base/sepolicy/samples/product/private \
+                                    packages/services/Car/car_product/sepolicy/private \
+                                    packages/services/Car/cpp/watchdog/sepolicy/private \
+                                    packages/services/Car/cpp/power/sepolicy/private \
+                                    device/qcom/sepolicy/generic/product/private
+
+PRODUCT_PUBLIC_SEPOLICY_DIRS :=     device/google/sdv/sdv_base/sepolicy/product/public \
+                                    packages/services/Car/car_product/sepolicy/public \
+                                    packages/services/Car/cpp/watchdog/sepolicy/public \
+                                    packages/services/Car/cpp/power/sepolicy/public \
+                                    device/qcom/sepolicy/generic/product/public
+
+$(warning FINAL SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS FOR $(TARGET_PRODUCT): $(SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS))
+$(warning FINAL SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS FOR $(TARGET_PRODUCT): $(SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS))
+$(warning FINAL PRODUCT_PUBLIC_SEPOLICY_DIRS FOR $(TARGET_PRODUCT): $(PRODUCT_PUBLIC_SEPOLICY_DIRS))
+$(warning FINAL PRODUCT_PRIVATE_SEPOLICY_DIRS FOR $(TARGET_PRODUCT): $(PRODUCT_PRIVATE_SEPOLICY_DIRS))
+#####################################################################################################################################
