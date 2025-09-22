@@ -18,6 +18,8 @@ typeattribute sdv_someip_stack_default sdv_someip_stack_server;
 userdebug_or_eng(`
 allow sdv_someip_stack_default vendor_someip_data_file:dir { add_name search write remove_name };
 allow sdv_someip_stack_default vendor_someip_data_file:file { create lock open write append getattr };
+# Added for dumpsys debug utility support
+allow sdv_someip_stack_default devpts:chr_file { read write };
 ')
 # someip sock file
 allow sdv_someip_stack_default vendor_someip_sock_file:dir { add_name search write remove_name };
