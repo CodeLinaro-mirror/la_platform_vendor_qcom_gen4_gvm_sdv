@@ -107,3 +107,66 @@ $(warning FINAL SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS FOR $(TARGET_PRODUCT): $(SYSTEM_
 $(warning FINAL PRODUCT_PUBLIC_SEPOLICY_DIRS FOR $(TARGET_PRODUCT): $(PRODUCT_PUBLIC_SEPOLICY_DIRS))
 $(warning FINAL PRODUCT_PRIVATE_SEPOLICY_DIRS FOR $(TARGET_PRODUCT): $(PRODUCT_PRIVATE_SEPOLICY_DIRS))
 #####################################################################################################################################
+
+#------------soong-config flags (APEX) start----------------
+
+ifeq (true, $(call math_gt_or_eq, $(SHIPPING_API_LEVEL), 34))
+$(call soong_config_set_bool, qti, SHIPPING_API_LEVEL, true)
+else
+$(call soong_config_set_bool, qti, SHIPPING_API_LEVEL, false)
+endif
+
+$(call soong_config_set, qti, TARGET_BOARD_DERIVATIVE_SUFFIX, $(TARGET_BOARD_DERIVATIVE_SUFFIX))
+
+ifeq ($(ENABLE_HYP), true)
+$(call soong_config_set_bool, qti, ENABLE_HYP, true)
+else
+$(call soong_config_set_bool, qti, ENABLE_HYP, false)
+endif
+
+ifeq ($(AUDIO_FEATURE_ENABLED_DYNAMIC_LOG), true)
+$(call soong_config_set_bool, qti, AUDIO_FEATURE_ENABLED_DYNAMIC_LOG, true)
+else
+$(call soong_config_set_bool, qti, AUDIO_FEATURE_ENABLED_DYNAMIC_LOG, false)
+endif
+
+ifeq ($(TARGET_PD_SERVICE_ENABLED), true)
+$(call soong_config_set_bool, qti, TARGET_PD_SERVICE_ENABLED, true)
+else
+$(call soong_config_set_bool, qti, TARGET_PD_SERVICE_ENABLED, false)
+endif
+
+
+ifneq (, $(filter $(TARGET_BOARD_DERIVATIVE_SUFFIX), _sdv _cdcsdv))
+
+# libar-gls_fe && libuhab
+ifneq ($(AUDIO_USE_STUB_HAL), true)
+ifeq ($(ENABLE_HYP), true)
+$(call soong_config_set_bool, qti, ENABLE_GSL_FE, true)
+else
+$(call soong_config_set_bool, qti, ENABLE_GSL_FE, false)
+endif #ENABLE_HYP
+endif # AUDIO_USE_STUB_HAL
+
+#soong flag exception for components common among many software-images
+
+ifeq (true, $(call math_gt_or_eq, $(SHIPPING_API_LEVEL), 34))
+$(call soong_config_set_bool, qti, ENABLE_UHAB_CDCSDV, true)
+else
+$(call soong_config_set_bool, qti, ENABLE_UHAB_CDCSDV, false)
+endif #SHIPPING_API_LEVEL
+
+ifeq ($(AUDIO_USE_STUB_HAL), false)
+$(call soong_config_set_bool, qti, ENABLE_TINYCOMPRESS, true)
+else
+$(call soong_config_set_bool, qti, ENABLE_TINYCOMPRESS, false)
+endif #AUDIO_USE_STUB_HAL
+
+ifeq ($(TARGET_PD_SERVICE_ENABLED), true)
+$(call soong_config_set_bool, qti, ENABLE_PD_MAPPER, true)
+else
+$(call soong_config_set_bool, qti, ENABLE_PD_MAPPER, false)
+endif #TARGET_PD_SERVICE_ENABLED
+endif #TARGET_BOARD_DERIVATIVE_SUFFIX
+
+#------------soong-config flags (APEX) end----------------
