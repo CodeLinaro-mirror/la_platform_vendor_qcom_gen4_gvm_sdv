@@ -80,7 +80,7 @@ $(call soong_config_set,qti,qti_android_version_above_16,true)
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS := device/google/sdv/sdv_base/sepolicy/system_ext/private \
                                     device/google/sdv/sdv_core_base/sepolicy/system_ext/private \
                                     device/google/sdv/sdv_cf/sepolicy/system_ext/private \
-                                    device/google/sdv/sdv_base/sepolicy/vvmtruststore/private \
+                                    device/google/sdv/sdv_base/vvmtruststore/sepolicy/vvmtruststore/private \
                                     device/qcom/sepolicy/generic/private
 
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS :=  device/google/sdv/sdv_base/sepolicy/system_ext/public \
