@@ -1,0 +1,35 @@
+# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+# SPDX-License-Identifier: BSD-3-Clause-Clear
+type cam_test, domain;
+type cam_test_exec, exec_type, vendor_file_type, file_type;
+type vendor_hab_cam_device, dev_type;
+type vendor_hab_ogles_device, dev_type;
+
+init_daemon_domain(cam_test)
+
+allow cam_test cam_test_exec:file { read execute open getattr };
+allow cam_test graphics_device:chr_file {getattr read write open ioctl};
+allow cam_test vendor_hab_ogles_device:chr_file { read write open ioctl map };
+allow cam_test vendor_hab_cam_device:chr_file { read write open ioctl };
+allow cam_test gpu_device:chr_file { read write open ioctl };
+allow cam_test self:capability { sys_resource sys_nice };
+
+# Allocate DMA-BUF Heap memory
+allow cam_test dmabuf_system_heap_device:chr_file rw_file_perms;
+allow cam_test vendor_dmabuf_system_heap_device:chr_file rw_file_perms;
+
+#Allow access to uncached dmabuf
+allow cam_test vendor_dmabuf_system_uncached_heap_device:chr_file rw_file_perms;
+
+
+allow cam_test self:process setsched;
+allow cam_test self:process { fork sigchld sigkill sigstop signull signal };
+allow cam_test system_server:binder { call transfer };
+
+userdebug_or_eng(`
+allow cam_test kmsg_debug_device:chr_file { open write };
+')
+
+allow cam_test vendor_sysfs_kpi:file w_file_perms;
+
+
