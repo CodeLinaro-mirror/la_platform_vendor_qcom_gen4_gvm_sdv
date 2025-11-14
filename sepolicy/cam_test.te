@@ -2,8 +2,6 @@
 # SPDX-License-Identifier: BSD-3-Clause-Clear
 type cam_test, domain;
 type cam_test_exec, exec_type, vendor_file_type, file_type;
-type vendor_hab_cam_device, dev_type;
-type vendor_hab_ogles_device, dev_type;
 
 init_daemon_domain(cam_test)
 
@@ -13,6 +11,8 @@ allow cam_test vendor_hab_ogles_device:chr_file { read write open ioctl map };
 allow cam_test vendor_hab_cam_device:chr_file { read write open ioctl };
 allow cam_test gpu_device:chr_file { read write open ioctl };
 allow cam_test self:capability { sys_resource sys_nice };
+allow cam_test vendor_data_file:dir { write add_name };
+allow cam_test vendor_data_file:file create_file_perms;
 
 # Allocate DMA-BUF Heap memory
 allow cam_test dmabuf_system_heap_device:chr_file rw_file_perms;
@@ -28,6 +28,7 @@ allow cam_test system_server:binder { call transfer };
 
 userdebug_or_eng(`
 allow cam_test kmsg_debug_device:chr_file { open write };
+allow cam_test kmsg_device:chr_file { write open };
 ')
 
 allow cam_test vendor_sysfs_kpi:file w_file_perms;
