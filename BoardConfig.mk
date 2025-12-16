@@ -71,6 +71,8 @@ TARGET_USERIMAGES_SPARSE_F2FS_DISABLED := false
 -include $(QCPATH)/common/gen4_gvm_sdv/BoardConfigVendor.mk
 
 BOARD_VENDOR_SEPOLICY_DIRS += device/qcom/gen4_gvm_sdv/sepolicy
+BOARD_SEPOLICY_DIRS += device/google/sdv/sdv_base/sepolicy/vendor
+BOARD_SEPOLICY_DIRS += device/google/sdv/sdv_core_base/sepolicy/vendor
 ENABLE_WIDEVINE_DRM := false
 
 $(call add_soong_config_namespace,qti)
