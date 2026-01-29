@@ -26,6 +26,8 @@ $(call inherit-product-if-exists, vendor/qcom/defs/product-defs/vendor/*.mk)
 
 PRODUCT_BUILD_PRODUCT_IMAGE := false
 
+TARGET_USES_QMAA_OVERRIDE_VIDEO := false
+
 PRODUCT_NAME := gen4_gvm_sdv
 PRODUCT_DEVICE := gen4_gvm_sdv
 PRODUCT_BRAND := qti
