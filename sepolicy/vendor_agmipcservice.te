@@ -1,0 +1,43 @@
+#Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+#SPDX-License-Identifier: BSD-3-Clause-Clear
+
+type vendor_agmipcservice, domain;
+type vendor_agmipcservice_exec, exec_type, vendor_file_type, file_type;
+
+type agm_socket_dev, file_type;
+
+#Allow for transition from init domain to agmservice
+init_daemon_domain(vendor_agmipcservice)
+
+hal_server_domain(vendor_agmipcservice, hal_audio)
+
+#Allow access to agm device nodes
+allow vendor_agmipcservice vendor_agm_device:chr_file rw_file_perms;
+
+# Allocate DMA-BUF Heap memory
+allow vendor_agmipcservice dmabuf_system_heap_device:chr_file rw_file_perms;
+allow vendor_agmipcservice vendor_dmabuf_system_heap_device:chr_file rw_file_perms;
+
+#Allow access to uncached dmabuf
+allow vendor_agmipcservice vendor_dmabuf_system_uncached_heap_device:chr_file rw_file_perms;
+
+#Allow qipc socket access for servreg communication
+allow vendor_agmipcservice self:qipcrtr_socket create_socket_perms_no_ioctl;
+
+# agm audio thread needs RT scheduling for LL/ULL audio, allow sys_nice
+allow vendor_agmipcservice self:global_capability_class_set sys_nice;
+
+allow vendor_agmipcservice vendor_hab_device:chr_file rw_file_perms;
+
+allow vendor_agmipcservice proc_asound:dir search;
+allow vendor_agmipcservice proc_asound:file r_file_perms;
+allow vendor_agmipcservice self:process setcurrent;
+userdebug_or_eng(`
+allow vendor_agmipcservice kmsg_debug_device:chr_file {open write};
+')
+
+binder_call(vendor_agmipcservice, vendor_harpaltest)
+
+#Allow socket access
+allow vendor_agmipcservice agm_socket_dev:dir { rw_dir_perms setattr };
+allow vendor_agmipcservice agm_socket_dev:sock_file { create write unlink setattr };

@@ -1,0 +1,27 @@
+# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+# SPDX-License-Identifier: BSD-3-Clause-Clear
+
+type sdv_someip_stack_default, domain;
+typeattribute sdv_someip_stack_default mlstrustedsubject;
+type sdv_someip_stack_default_exec, exec_type, file_type, vendor_file_type;
+init_daemon_domain(sdv_someip_stack_default)
+
+# Allow the sdv_someip_stack_default domain to use Binder IPC
+binder_use(sdv_someip_stack_default)
+
+# SOME/IP agent can use sockets
+net_domain(sdv_someip_stack_default)
+
+typeattribute sdv_someip_stack_default sdv_someip_stack_server;
+
+# someip log file access in userdebug mode
+userdebug_or_eng(`
+allow sdv_someip_stack_default vendor_someip_data_file:dir { add_name search write remove_name };
+allow sdv_someip_stack_default vendor_someip_data_file:file { create lock open write append getattr };
+# Added for dumpsys debug utility support
+allow sdv_someip_stack_default devpts:chr_file { read write };
+')
+# someip sock file
+allow sdv_someip_stack_default vendor_someip_sock_file:dir { add_name search write remove_name };
+allow sdv_someip_stack_default vendor_someip_sock_file:file { create lock open write };
+allow sdv_someip_stack_default vendor_someip_sock_file:sock_file { create setattr write unlink };

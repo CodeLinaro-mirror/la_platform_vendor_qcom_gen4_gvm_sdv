@@ -1,0 +1,30 @@
+# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+# SPDX-License-Identifier: BSD-3-Clause-Clear
+
+/dev/snd/controlC0                                                       u:object_r:audio_device:s0
+
+/dev/snd/pcmC0D0p                                                        u:object_r:audio_device:s0
+/dev/snd/pcmC0D2p                                                        u:object_r:audio_device:s0
+/dev/snd/pcmC0D4p                                                        u:object_r:audio_device:s0
+/dev/snd/pcmC0D6p                                                        u:object_r:audio_device:s0
+/dev/snd/pcmC0D10p                                                       u:object_r:audio_device:s0
+/dev/snd/pcmC0D12p                                                       u:object_r:audio_device:s0
+/dev/snd/pcmC0D14p                                                       u:object_r:audio_device:s0
+/dev/snd/pcmC0D16p                                                       u:object_r:audio_device:s0
+/dev/snd/pcmC0D18p                                                       u:object_r:audio_device:s0
+/dev/snd/pcmC0D20p                                                       u:object_r:audio_device:s0
+/dev/snd/pcmC0D22p                                                       u:object_r:audio_device:s0
+/dev/snd/pcmC0D24p                                                       u:object_r:audio_device:s0
+/dev/snd/pcmC0D26p                                                       u:object_r:audio_device:s0
+
+#AGM
+/vendor/bin/hw/agmipcservice                                             u:object_r:vendor_agmipcservice_exec:s0
+
+/vendor/bin/HarPalTest                                                   u:object_r:vendor_harpaltest_exec:s0
+
+#SOCKET
+/dev/socket                                                              u:object_r:socket_device:s0
+/dev/socket/agm                                                          u:object_r:agm_socket_dev:s0
+
+# SDV SOME/IP Stack
+/vendor/bin/qc_sdv_someip_stack_agent                                    u:object_r:sdv_someip_stack_default_exec:s0

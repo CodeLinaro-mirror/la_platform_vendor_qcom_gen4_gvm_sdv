@@ -1,0 +1,7 @@
+#Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+#SPDX-License-Identifier: BSD-3-Clause-Clear
+
+allow hwservicemanager lmkd:binder transfer;
+allow hwservicemanager lmkd:dir search;
+allow hwservicemanager lmkd:file { open read };
+allow hwservicemanager lmkd:process getattr;

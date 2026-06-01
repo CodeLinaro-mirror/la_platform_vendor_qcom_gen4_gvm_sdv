@@ -1,0 +1,24 @@
+<!--
+    Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+    SPDX-License-Identifier: BSD-3-Clause-Clear
+-->
+
+<manifest version="1.0" type="device" target-level="202504">
+   <!-- display -->
+    <!--hal format="aidl">
+        <name>android.hardware.gatekeeper</name>
+        <version>1</version>
+        <interface>
+            <name>IGatekeeper</name>
+            <instance>default</instance>
+        </interface>
+    </hal-->
+    <hal format="aidl">
+        <name>android.hardware.automotive.audiocontrol</name>
+        <version>5</version>
+        <interface>
+            <name>IAudioControl</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+</manifest>

@@ -1,0 +1,4 @@
+#Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+#SPDX-License-Identifier: BSD-3-Clause-Clear
+
+vendor.qti.hardware.agm::IAGM                             u:object_r:vendor_agm_hwservice:s0
