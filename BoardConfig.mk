@@ -4,7 +4,7 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 10737418240
 BOARD_BOOTCONFIG := androidboot.hardware=qcom androidboot.selinux=permissive androidboot.memcg=1 androidboot.recover_usb=1
 BOARD_KERNEL_CMDLINE := user_debug=31 print-fatal-signals=1  init=/init swiotlb=4096  kpti=0 pcie_ports=compat firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7 debug loglevel=9
 BOARD_BOOTCONFIG += androidboot.console=ttyAMA0
-BOARD_KERNEL_CMDLINE += initcall_debug printk.devkmsg=on log_buf_len=10M  printk_ratelimit=0 printk_ratelimit_burst=0 debug loglevel=9
+BOARD_KERNEL_CMDLINE += printk.devkmsg=on log_buf_len=10M  printk_ratelimit=0 printk_ratelimit_burst=0 debug loglevel=9
 BOARD_KERNEL_CMDLINE += earlycon=pl011,0x1c090000 console=ttyAMA0
 BOARD_BOOTCONFIG += androidboot.sdv.instance_name=instance1 androidboot.sdv.boot_mode=unlocked androidboot.sdv.ignore_avb_state=true androidboot.sdv.vvmfactorytrust=c779a73d0595a6814ba0414a419e99ad4026ad0feb603f2ad80ee6a9e4d1adb7 androidboot.sdv.keymint.rpc.hbk=799da7577efd41d5b27810c5952fcec0291cbcfd687e77ac9a6cec8370651b1d
 BOARD_BOOTCONFIG += androidboot.init_rc=$(LOCAL_ANDROIDBOOT_INIT_RC) \
