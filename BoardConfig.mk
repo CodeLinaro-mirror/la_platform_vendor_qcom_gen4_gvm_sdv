@@ -32,11 +32,13 @@ SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS := device/google/sdv/sdv_base/sepolicy/system_e
                                     device/google/sdv/sdv_core_base/sepolicy/system_ext/private \
                                     device/google/sdv/sdv_cf/sepolicy/system_ext/private \
                                     device/google/sdv/sdv_base/vvmtruststore/sepolicy/vvmtruststore/private \
-                                    device/qcom/sepolicy/generic/private
+                                    device/qcom/sepolicy/generic/private \
+                                    device/qcom/gen4_gvm_sdv/sepolicy/private
 
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS :=  device/google/sdv/sdv_base/sepolicy/system_ext/public \
                                     device/google/sdv/sdv_core_base/sepolicy/system_ext/public \
-                                    device/qcom/sepolicy/generic/public
+                                    device/qcom/sepolicy/generic/public \
+                                    device/qcom/gen4_gvm_sdv/sepolicy/system_ext/public
 
 PRODUCT_PRIVATE_SEPOLICY_DIRS :=    device/google/sdv/sdv_base/sepolicy/samples/product/private \
                                     device/google/sdv/sdv_core_base/sepolicy/product/private \
@@ -51,7 +53,8 @@ PRODUCT_PUBLIC_SEPOLICY_DIRS :=     device/google/sdv/sdv_base/sepolicy/product/
                                     packages/services/Car/car_product/sepolicy/public \
                                     packages/services/Car/cpp/watchdog/sepolicy/public \
                                     packages/services/Car/cpp/power/sepolicy/public \
-                                    device/qcom/sepolicy/generic/product/public
+                                    device/qcom/sepolicy/generic/product/public \
+                                    device/qcom/gen4_gvm_sdv/sepolicy/product/public
 
 BOARD_PRODUCT_SEPOLICY_DIRS += \
     packages/services/display_safety/service/product/sepolicy \

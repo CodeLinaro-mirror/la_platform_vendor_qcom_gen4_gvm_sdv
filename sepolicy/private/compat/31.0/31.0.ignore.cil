@@ -1,0 +1,31 @@
+;; new_objects - a collection of types that have been introduced that have no
+;;   analogue in older policy.  Thus, we do not need to map these types to
+;;   previous ones.  Add here to pass checkapi test
+(type new_objects)
+(typeattribute new_objects)
+(typeattributeset new_objects
+  ( new_objects
+    mesh_missing_vms_prop
+    nsfs
+    open_dice_device
+    orchestrator_power_boot_complete_prop
+    orchestrator_vehicle_boot_complete_prop
+    priority_service_bundle
+    product_harplatform_props
+    sdv_configurable_publisher_registry_service
+    sdv_dice_chain_provider_service
+    sdv_dt_service
+    sdv_id_service
+    sdv_lc_manager_service
+    sdv_lc_service_manager_service
+    sdv_mesh_provisioning_service
+    sdv_mesh_status_service
+    sdv_rpcagent_service
+    sdv_sd_service
+    sdv_someip_broker_agent_load_indicators_service
+    sdv_someip_stack_service
+    sdv_telemetry_service
+    sdv_transport_support_service
+    sdv_vpm_agent_notification_service
+    untrusted_service_bundle
+    vsock_device))

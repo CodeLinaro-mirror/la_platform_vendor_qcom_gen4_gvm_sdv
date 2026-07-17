@@ -1,0 +1,9 @@
+#Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+#SPDX-License-Identifier: BSD-3-Clause-Clear
+
+# cartelemetryd and cartelemetryd_service are referenced in
+# device/qcom/sepolicy/generic/private/compat/202504/202504.cil
+# but are not defined in the qssi_au_sdv policy. Define them here
+# so the 202504_compat_test can compile successfully.
+type cartelemetryd, domain;
+type cartelemetryd_service, service_manager_type;
