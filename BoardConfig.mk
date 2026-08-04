@@ -1,4 +1,6 @@
 include device/qcom/gen4_gvm/BoardConfig.mk
+TARGET_ARCH := arm64
+TARGET_2ND_ARCH := arm
 
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 10737418240
 BOARD_BOOTCONFIG := androidboot.hardware=qcom androidboot.selinux=permissive androidboot.memcg=1 androidboot.recover_usb=1
