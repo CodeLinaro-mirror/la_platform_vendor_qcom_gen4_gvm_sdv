@@ -67,3 +67,12 @@ SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += \
     packages/services/display_safety/service/product/har_sdv_service_bundle_apex/lifecycle/sepolicy \
 
 $(call soong_config_set,sdv_authz,acl_provider_type,sdv_acl_provider)
+
+$(call add_soong_config_namespace, qti)
+$(call soong_config_set, qti, TARGET_BOARD_DERIVATIVE_SUFFIX, $(TARGET_BOARD_DERIVATIVE_SUFFIX))
+
+ifeq (true, $(call math_gt_or_eq, $(SHIPPING_API_LEVEL), 34))
+$(call soong_config_set_bool, qti, ENABLE_UHAB_CDCSDV, true)
+else
+$(call soong_config_set_bool, qti, ENABLE_UHAB_CDCSDV, false)
+endif #SHIPPING_API_LEVEL
