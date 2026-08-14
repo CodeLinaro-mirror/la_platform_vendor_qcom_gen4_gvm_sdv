@@ -73,6 +73,11 @@ AOSAL_BUILD_WITH_SOONG := true
 $(call soong_config_namespace, qti_aosal)
 $(call soong_config_set_bool, qti_aosal, AOSAL_BUILD_SOONG, true)
 ############################################################################
+#######################Soong config for SDV################################
+TARGET_DISPLAY_SAFETY_ENABLED := true
+$(call soong_config_namespace, qti_sdv)
+$(call soong_config_set_bool, qti_sdv, SDV_DISPLAY_SAFETY_ENABLED, true)
+############################################################################
 
 $(call add_soong_config_namespace, qti)
 $(call soong_config_set, qti, TARGET_BOARD_DERIVATIVE_SUFFIX, $(TARGET_BOARD_DERIVATIVE_SUFFIX))
