@@ -76,3 +76,6 @@ $(call soong_config_set_bool, qti, ENABLE_UHAB_CDCSDV, true)
 else
 $(call soong_config_set_bool, qti, ENABLE_UHAB_CDCSDV, false)
 endif #SHIPPING_API_LEVEL
+
+# AUDIO_SDV_APEX_ENABLED gates SDV-specific _apex audio libs (libuhab_apex, libpdmapper_apex,pal,agm etc)
+$(call soong_config_set,qti,AUDIO_SDV_APEX_ENABLED,true)
