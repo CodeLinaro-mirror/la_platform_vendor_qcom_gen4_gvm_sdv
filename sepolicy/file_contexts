@@ -18,7 +18,7 @@
 /dev/snd/pcmC0D26p                                                       u:object_r:audio_device:s0
 
 #AGM
-/vendor/bin/hw/agmipcservice                                             u:object_r:vendor_agmipcservice_exec:s0
+/(vendor|system/vendor)/bin/hw/agmipcservice                             u:object_r:vendor_agmservice_qti_exec:s0
 
 /vendor/bin/HarPalTest                                                   u:object_r:vendor_harpaltest_exec:s0
 
