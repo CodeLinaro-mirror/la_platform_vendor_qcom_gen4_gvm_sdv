@@ -68,6 +68,12 @@ SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += \
 
 $(call soong_config_set,sdv_authz,acl_provider_type,sdv_acl_provider)
 
+#######################Soong config for AOSAL###############################
+AOSAL_BUILD_WITH_SOONG := true
+$(call soong_config_namespace, qti_aosal)
+$(call soong_config_set_bool, qti_aosal, AOSAL_BUILD_SOONG, true)
+############################################################################
+
 $(call add_soong_config_namespace, qti)
 $(call soong_config_set, qti, TARGET_BOARD_DERIVATIVE_SUFFIX, $(TARGET_BOARD_DERIVATIVE_SUFFIX))
 
