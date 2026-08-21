@@ -107,8 +107,12 @@ on init
     write /dev/kmsg "boot_kpi: M - INITRC on init trigger"
     write /sys/kernel/boot_kpi/kpi_values "boot_kpi: M - INITRC on init trigger"
     start console_qc
+
+on property:ro.boot.audio=audioreach
     write /dev/kmsg "M - audio starting agm service"
-    #start vendor.agm-1-0
+    start vendor.agm-1-0
+
+on property:init.svc.vendor.agm-1-0=running
     #start harpaltest
 
 on property:dev.bootcomplete=1
