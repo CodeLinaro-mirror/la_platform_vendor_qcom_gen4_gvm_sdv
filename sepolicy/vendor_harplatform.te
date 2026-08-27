@@ -1,0 +1,14 @@
+# Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+# SPDX-License-Identifier: BSD-3-Clause-Clear
+
+# Additional rules for vendor_harplatform on gen4_gvm_sdv.
+# The base type is defined in packages/services/display_safety/service/product/sepolicy/harplatform.te.
+allow vendor_harplatform vendor_sysfs_sndcard:file { open read write rw_file_perms };
+userdebug_or_eng(`
+allow vendor_harplatform vendor_sysfs_kpi:file w_file_perms;
+allow vendor_harplatform kmsg_debug_device:chr_file { open write };
+')
+
+# AGM HAL service access
+hal_client_domain(vendor_harplatform, hal_audio)
+
