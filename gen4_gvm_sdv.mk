@@ -875,4 +875,4 @@ LOCAL_ANDROIDBOOT_INIT_RC := /vendor/etc/init/hw/init.target.rc
 
 PRODUCT_ENFORCE_VINTF_MANIFEST := false
 
-PRODUCT_COPY_FILES += device/google/sdv/sdv_cf/ethernet/ethernet.sdv_cf.rc:$(TARGET_COPY_OUT_PRODUCT)/etc/init/hw/ethernet.sdv_cf.rc
+
