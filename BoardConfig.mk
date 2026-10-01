@@ -25,7 +25,7 @@ TARGET_USERIMAGES_SPARSE_F2FS_DISABLED := false
 BOARD_VENDOR_SEPOLICY_DIRS += device/qcom/gen4_gvm_sdv/sepolicy \
                               device/google/sdv/sdv_core_cf/sepolicy/vendor \
                               device/google/sdv/sdv_core_base/sepolicy \
-                              packages/services/display_safety/service/product/sepolicy/
+                              packages/services/display_safety/service/product/sepolicy
 
 ENABLE_WIDEVINE_DRM := false
 
