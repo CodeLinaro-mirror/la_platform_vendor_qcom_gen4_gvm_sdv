@@ -320,7 +320,11 @@ SOONG_CONFIG_qtiwifi_automobile := true
 #flag to compile hexlp code or not!
 SOONG_CONFIG_NAMESPACES += hexlp_compilation
 SOONG_CONFIG_hexlp_compilation += is_enabled
+ifeq ($(PLATFORM_VERSION), $(filter $(PLATFORM_VERSION),CinnamonBun 17))
+SOONG_CONFIG_hexlp_compilation_is_enabled := false
+else
 SOONG_CONFIG_hexlp_compilation_is_enabled := $(TARGET_USES_QMAA_OVERRIDE_HEXLP)
+endif
 
 #----------------------------------------------------------------------
 # namespace definition GPTP specific
