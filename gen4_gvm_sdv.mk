@@ -146,7 +146,7 @@ endif
 TARGET_GVMGH_SPECIFIC := false
 
 # RRO configuration
-TARGET_USES_RRO := true
+TARGET_USES_RRO := false
 
 #Install Fastadas test apps
 INSTALL_FASTADS_TEST_APPS := true
