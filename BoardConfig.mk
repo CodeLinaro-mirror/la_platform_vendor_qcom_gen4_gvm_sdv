@@ -222,7 +222,7 @@ TARGET_USES_ION := true
 TARGET_USES_NEW_ION_API :=true
 TARGET_USES_QCOM_BSP := false
 
-BOARD_BOOTCONFIG := androidboot.hardware=qcom androidboot.selinux=permissive androidboot.memcg=1 androidboot.recover_usb=1 androidboot.load_modules_parallel=true
+BOARD_BOOTCONFIG := androidboot.hardware=qcom androidboot.selinux=enforcing androidboot.memcg=1 androidboot.recover_usb=1 androidboot.load_modules_parallel=true
 
 BOARD_KERNEL_CMDLINE := user_debug=31 print-fatal-signals=1  init=/init swiotlb=4096  kpti=0 pcie_ports=compat firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7
 ifeq ($(TARGET_CONSOLE_ENABLED),true)
@@ -399,6 +399,7 @@ BOARD_BOOTCONFIG += androidboot.init_rc=$(LOCAL_ANDROIDBOOT_INIT_RC) \
                     androidboot.microdroid.debuggable=1 \
                     androidboot.sdv.rpc.interface=eth0 \
                     androidboot.adb.enabled=1
+BOARD_BOOTCONFIG += androidboot.virt.static_ip1=192.168.1.2 androidboot.virt.static_gateway_ip=192.168.1.1
 
 BOARD_KERNEL_CMDLINE +=  log_buf_len=4M \
                          audit=1 \

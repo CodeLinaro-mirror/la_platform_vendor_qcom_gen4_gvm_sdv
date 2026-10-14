@@ -34,9 +34,6 @@ on early-fs
 
 on fs
     exec_background u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -d /vendor_dlkm/lib/modules/ boot_marker smcinvoke_dlkm tz_log_dlkm qseecom_dlkm qcrypto-msm_dlkm socinfo_dt eavb_fe ptp_virtual qcom_soc_wdt msm_vm_poweroff qcom_va_minidump
-    exec_background - root root -- /system/bin/ifconfig eth0 192.168.1.2 netmask 255.255.255.0
-    exec_background - root root -- /system/bin/ifconfig eth0 up
-
 
 service gki.modprobe /vendor/bin/system_dlkm_modprobe.sh
     class main
