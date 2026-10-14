@@ -222,11 +222,12 @@ TARGET_USES_ION := true
 TARGET_USES_NEW_ION_API :=true
 TARGET_USES_QCOM_BSP := false
 
-BOARD_BOOTCONFIG := androidboot.hardware=qcom androidboot.selinux=enforcing androidboot.memcg=1 androidboot.recover_usb=1 androidboot.load_modules_parallel=true
+BOARD_BOOTCONFIG := androidboot.hardware=qcom androidboot.selinux=permissive androidboot.memcg=1 androidboot.recover_usb=1 androidboot.load_modules_parallel=true
 
 BOARD_KERNEL_CMDLINE := user_debug=31 print-fatal-signals=1  init=/init swiotlb=4096  kpti=0 pcie_ports=compat firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7
 ifeq ($(TARGET_CONSOLE_ENABLED),true)
 BOARD_KERNEL_CMDLINE += console=hvc0,115200 debug loglevel=9
+BOARD_KERNEL_CMDLINE += printk.devkmsg=on printk_ratelimit=0 printk_ratelimit_burst=0
 BOARD_BOOTCONFIG += androidboot.console=hvc0
 else ifeq ($(TARGET_CONSOLE_ENABLED),false)
 BOARD_KERNEL_CMDLINE += qcom_geni_serial.con_enabled=0
@@ -391,10 +392,6 @@ endif
 #which impacts duplicates found in vendor_dlkm partition while building image
 BOARD_VENDOR_KERNEL_MODULES := $(sort $(BOARD_VENDOR_KERNEL_MODULES))
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 10737418240
-BOARD_BOOTCONFIG := androidboot.hardware=qcom androidboot.selinux=permissive androidboot.memcg=1 androidboot.recover_usb=1
-BOARD_KERNEL_CMDLINE := user_debug=31 print-fatal-signals=1  init=/init swiotlb=4096 kpti=0 pcie_ports=compat firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7 debug loglevel=9
-
-BOARD_KERNEL_CMDLINE += printk.devkmsg=on printk_ratelimit=0 printk_ratelimit_burst=0
 
 BOARD_BOOTCONFIG += androidboot.sdv.instance_name=instance1 androidboot.sdv.boot_mode=unlocked androidboot.sdv.ignore_avb_state=true androidboot.sdv.vvmfactorytrust=c779a73d0595a6814ba0414a419e99ad4026ad0feb603f2ad80ee6a9e4d1adb7 androidboot.sdv.keymint.rpc.hbk=799da7577efd41d5b27810c5952fcec0291cbcfd687e77ac9a6cec8370651b1d
 BOARD_BOOTCONFIG += androidboot.init_rc=$(LOCAL_ANDROIDBOOT_INIT_RC) \
