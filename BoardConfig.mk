@@ -464,7 +464,6 @@ $(call soong_config_namespace, qti_sdv)
 $(call soong_config_set_bool, qti_sdv, SDV_DISPLAY_SAFETY_ENABLED, true)
 ############################################################################
 
-$(call add_soong_config_namespace, qti)
 $(call soong_config_set, qti, TARGET_BOARD_DERIVATIVE_SUFFIX, $(TARGET_BOARD_DERIVATIVE_SUFFIX))
 
 ifeq (true, $(call math_gt_or_eq, $(SHIPPING_API_LEVEL), 34))
